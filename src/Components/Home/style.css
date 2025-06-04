@@ -1,0 +1,103 @@
+.image-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 30px 20px;
+  margin: 0 auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px;
+}
+
+.image-container::-webkit-scrollbar {
+  height: 8px;
+}
+.image-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+.image-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pics-container {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.image-sub-container {
+  position: relative;
+  width: 90vw; /* Responsive width */
+  max-width: 780px; /* Max for desktops */
+  height: 70vw; /* Responsive height */
+  max-height: 600px; /* Max for desktops */
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+}
+
+.image-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.image-title::before {
+  content: "Photography";
+  background: #000;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+.image-sub-container:hover::before {
+  background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black overlay */
+}
+
+.image-sub-container:hover .images {
+  transform: scale(1.05); /* optional slight zoom */
+  transition: transform 0.3s ease;
+}
+
+.image-sub-container:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+.container-logo {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .image-sub-container {
+    width: 90vw;
+    height: auto; /* let height adjust */
+    aspect-ratio: 4 / 3; /* or whatever ratio you prefer */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-sub-container {
+    width: 92vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}

@@ -1,4 +1,3 @@
-import "./App.css";
 import Assignment from "./Components/Home";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Content from "./Components/Content";

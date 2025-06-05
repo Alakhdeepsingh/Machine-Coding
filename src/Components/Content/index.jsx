@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
 import './index.css';
+import CommonHeader from '../CommonHeader';
 
 const Content = () => {
     const { id } = useParams();
@@ -22,11 +23,7 @@ const Content = () => {
 
     return (
         <div className="content-container">
-            <div className="logo-section">
-                <img src={logo} alt="Logo" className="logo" />
-                <h1 className="main-title">alkye</h1>
-                <p className="subtitle">The easiest test you will ever do</p>
-            </div>
+            <CommonHeader />
 
             <div className="image-section">
                 <img src={item.image_url} alt={item.title} className="main-image" />

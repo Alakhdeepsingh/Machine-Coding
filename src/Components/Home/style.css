@@ -8,6 +8,10 @@
   scroll-padding-left: 20px;
 }
 
+.container {
+  background-color: #f4f4f4;
+}
+
 .image-container::-webkit-scrollbar {
   height: 8px;
 }
@@ -48,8 +52,8 @@
 
 .image-title {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 80px;
+  left: 50px;
   right: 20px;
   color: white;
   font-size: 14px;
@@ -59,6 +63,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
 }
 
 .image-title::before {
@@ -70,6 +78,23 @@
   font-weight: 600;
   width: fit-content;
 }
+
+.image-sub-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0); /* no overlay by default */
+  transition: background 0.3s ease;
+}
+
+.image-sub-container:hover::after {
+  background: rgba(0, 0, 0, 0.3); /* dark overlay on hover */
+}
+
+.image-sub-container:hover .images {
+  transform: scale(1.02); /* gentle zoom effect */
+  transition: transform 0.3s ease;
+}
 .image-sub-container:hover::before {
   background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black overlay */
 }
@@ -79,11 +104,62 @@
   transition: transform 0.3s ease;
 }
 
-.image-sub-container:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-}
 .container-logo {
   margin-top: 40px;
+}
+
+.heading-text {
+  color: #6d6d6d;
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.heading-name {
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.container {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container-logo-image {
+  width: 90px;
+  height: 40px;
+}
+
+@media (min-width: 321px) and (max-width: 767px) {
+  /* CSS rules for devices between 321px and 767px */
+  .image-container {
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -92,12 +168,45 @@
     height: auto; /* let height adjust */
     aspect-ratio: 4 / 3; /* or whatever ratio you prefer */
   }
+
+  .image-title {
+    top: 50px;
+    left: 30px;
+  }
+  .sub-container {
+    margin-top: 70px;
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px;
+    max-width: 550px;
+    margin-top: 10px;
+  }
+
+  .pics-container {
+    flex: 0 0 100vw;
+    scroll-snap-align: start;
+  }
+
+  .image-sub-container {
+    width: 100vw;
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+  .container-logo {
+    margin-top: 0px;
+  }
 }
 
 @media (max-width: 480px) {
   .image-sub-container {
     width: 92vw;
-    height: auto;
+    height: 54vh;
     aspect-ratio: 4 / 3;
   }
 }
